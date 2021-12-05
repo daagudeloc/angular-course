@@ -5,13 +5,59 @@
 
 </div>
 
+<div class="demo">
+
+    <!-- Angular pipe: {{ }} place holder + information (variable or reference) to show + pipe to use to "format" it -->
+    <!-- <div>Start Date: {{startDate | date: 'MMM dd yyyy'}}</div> -->
+
+    <!-- For string formatting, the used formats were uppercase, lowercase and titlecase -->
+    <!-- <div>{{title | titlecase}}</div> -->
+
+    <!-- Regular number pipe: Parameter passed to the pipe is: # of integer digits . range of decimal digits e.g. (3 int digits, 3 to 5 decimal digits) -->
+    <!-- <div>{{price | number: '3.3-5'}}</div> -->
+    
+    <!-- Currency pipe: (Default: US Dollars [$]) Parameter passed to the pipe: Currency code of currency -->
+    <!-- <div>{{price | currency: 'EUR'}}</div> -->
+    
+    <!-- Percentage pipe -->
+    <!-- <div>Percentage: {{rate | percent}}</div> -->
+    
+    <!-- JSON pipe -->
+    <!-- {{ course | json }} -->
+
+    <!-- Key-value pipe (Object properties) -->
+    <!-- <div *ngFor="let pair of course | keyvalue">
+        {{pair.key + ': ' + pair.value}}        
+    </div> -->
+
+</div>
+
 <div class="courses">
 
-    <course-card (courseSelected)="onCourseSelected($event)" [course]="coreCourse"></course-card>
-    
-    <course-card (courseSelected)="onCourseSelected($event)" [course]="rxjsCourse"></course-card>
+    <!-- Slice pipe for arrays: startIndex (inclusive) : End index (non-inclusive) -->
+    <!-- <course-card *ngFor="let course of courses | slice: 0:2;
+                         index as i;"
+                 
+                 (courseSelected)="onCourseSelected($event)"
+                 [course]="course" [cardIndex]="i + 1"></course-card> -->
+    <course-card *ngFor="let course of courses;
+                         index as i;"
+                 
+                 (courseSelected)="onCourseSelected($event)"
+                 [course]="course" [cardIndex]="i + 1"></course-card>
 
-    <course-card (courseSelected)="onCourseSelected($event)" [course]="ngrxCourse"></course-card>
+    <!-- <course-card *ngFor="let course of courses;
+                         index as i;
+                         first as isFirst;
+                         last as isLast;
+                         even as isEven;
+                         odd as isOdd;"
+                 [class.is-first] = "isFirst"
+                 [class.is-last] = "isLast"
+                 [class.is-even] = "isEven"
+                 [class.is-odd] = "isOdd"
+                 (courseSelected)="onCourseSelected($event)"
+                 [course]="course" [cardIndex]="i + 1"></course-card> -->
 
 </div>
 
