@@ -1,3 +1,5 @@
+## IMPORTANT: 
+This code was taken from: https://github.com/angular-university/angular-course/tree/1-components. Complete course is available at: https://www.udemy.com/course/angular-for-beginners-course/
 
 ##  Angular Core Deep Dive (Video Course)
 
