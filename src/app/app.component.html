@@ -7,9 +7,17 @@
 
 <div>
 
-  <div class="courses">
+  <!-- Here, we get the observable, resolve the promise and its elements are identified as courses. The pipe is not used in the ngFor loop -->
+  <div class="courses" *ngIf="courses$ | async as courses">
+  
+  <!-- <div class="courses"> -->
 
+    <!-- Here, the async pipe is used to subscribe to the Observable property of the component -->
+    <!-- <course-card *ngFor="let course of (courses$ | async)" >>> Resolution of promise from the observable, using async pipe.
+                 [course]="course"> -->
+    
     <course-card *ngFor="let course of courses"
+                 (courseChanged)="save($event)"
                  [course]="course">
 
       <course-image [src]="course.iconUrl"></course-image>
@@ -21,6 +29,4 @@
 
 </div>
 
-
-
-
+<!-- Using the async pipe guarantees that when the component is destroyed, the async pipes handles unsubscribing from the observable, to prevent memory leaks. -->
